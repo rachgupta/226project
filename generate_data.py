@@ -4,17 +4,17 @@ import json
 
 #IDs start here
 #0-19
-num_bi_men = 20
+num_bi_men = 10
 #20-39
-num_gay_men = 20
+num_gay_men = 10
 #40-59
-num_straight_men = 20
+num_straight_men = 10
 #60-79
-num_bi_women = 20
+num_bi_women = 10
 #80-99
-num_gay_women = 20
+num_gay_women = 10
 #100-119
-num_straight_women = 20
+num_straight_women = 10
 
 total_participants = num_bi_men +num_gay_men+num_straight_men+num_bi_women+num_gay_women+num_straight_women
 
@@ -58,5 +58,5 @@ for k in all_preferences.keys():
     print(f"ID: {k}, Preferences: {all_preferences[k]}")
     
     
-with open("equal_random1.json", "w") as file:
+with open("equal_random2.json", "w") as file:
     json.dump(all_preferences, file)
