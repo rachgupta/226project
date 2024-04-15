@@ -9,4 +9,4 @@ Gale and Shapley first introduced the Stable Marriage Problem in 1962. In the Ga
 How can we adapt the stable marriage problem to accommodate same-sex relationships through a reduction to a constrained version of the stable roommates problem, utilizing incomplete preference lists to account for individuals' sexual orientations?
 
 ## Algorithm:
-We coded Irving’s algorithm to solve Stable Marriage Problem using a reduction to the Stable Roommates Problem.
+Since SRI is NP-Hard, we are using constaint programming and integer programming from [this paper](https://arxiv.org/pdf/2110.02555.pdf) to solve Stable Queer Marriage Problem using a reduction to the Stable Roommates with Incomplete Lists Problem. 
