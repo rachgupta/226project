@@ -26,7 +26,9 @@ def main():
     with open(sys.argv[3], 'w') as f:
         f.write(str(pairings))
     
-    cost(pairings, all_preferences, groups)
+    group_costs = cost(pairings, all_preferences, groups)
+    print(balanced_score(group_costs))
+    print(group_equal_score(group_costs))
     
 def group_equal_score(group_costs):
     max_score = 0
