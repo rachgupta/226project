@@ -15,18 +15,10 @@ def main():
     # GENEROUS = 4
     # ALMOST_STABLE = 5
     pairings = solve_SRI(sys.argv[1], type)
-    all_preferences = {}
-    groups = {}
-    with open('random_data_dict.pkl', 'rb') as f:
-        all_preferences = pickle.load(f)
-
-    with open('random_data_group.pkl', 'rb') as f:
-        groups = pickle.load(f)
     
     with open(sys.argv[3], 'w') as f:
         f.write(str(pairings))
     
-    cost(pairings, all_preferences, groups)
     
 def cost(pairings, all_preferences, groups):
     group_costs = [0, 0, 0, 0, 0, 0]
