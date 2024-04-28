@@ -25,7 +25,7 @@ def main():
     
     with open(sys.argv[3], 'w') as f:
         f.write(str(pairings))
-    
+ 
     cost(pairings, all_preferences, groups)
     
 def cost(pairings, all_preferences, groups):
@@ -38,7 +38,7 @@ def cost(pairings, all_preferences, groups):
         # find rank of person 1 on person 2's list
         rank2 = all_preferences[person2].index(person1)
         person1_group = find_group(person1, groups)-1 # find which group person 1 belongs to
-        person2_group = find_group(person1, groups)-1 # find which group person 2 belongs to
+        person2_group = find_group(person2, groups)-1 # find which group person 2 belongs to
         # update group costs
         group_costs[person1_group] += rank1
         group_costs[person2_group] += rank2
