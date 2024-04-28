@@ -17,7 +17,7 @@ def generate_random_data(num, filename):
 
     all_preferences = {}
     group_assignments = {1: [], 2: [], 3:[], 4: [], 5: [], 6: []}
-    for i in range(1, total_participants):
+    for i in range(1, total_participants+1):
         group_num = 0
         #bi men
         if(i < num_bi_men + 1):
