@@ -86,9 +86,9 @@ def generate_proportional_data(num, filename):
     ##PROPORTIONS ESTIMATED FROM 2021 DATA
     ##assumed 10% gay or bisexual
     ##assumed 5% homosexual, 5% bisexual, 90% straight
-    total_lgbt = int(0.1 * num)
-    total_straight = int(0.9 * num)
-    gay_count = int(0.05 * num)
+    total_lgbt = int(0.4 * num)
+    total_straight = int(0.6 * num)
+    gay_count = int(0.2 * num)
     bi_count = total_lgbt - gay_count
     straight_count = total_straight
     total_count = gay_count + bi_count + straight_count
