@@ -59,6 +59,6 @@ def main(dict_file, group_file, matches_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: python test.py <dict_file> <group_file> <matches_file>")
+        print("Usage: python fairness_constraints.py <dict_file> <group_file> <matches_file>")
         sys.exit(1)
     main(sys.argv[1], sys.argv[2], sys.argv[3])
