@@ -124,7 +124,6 @@ def generate_proportional_data(num, filename):
         elif(i < total_participants + 1):
             group_num = 6
         group_assignments[group_num].append(i)
-    
     for i in range(1, total_participants + 1):
         #bi men
         if(i < num_bi_men + 1):
@@ -140,7 +139,7 @@ def generate_proportional_data(num, filename):
             preferences = group_assignments[4]+group_assignments[6]+group_assignments[3]+group_assignments[1]
         #straight women
         elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - num_bi_women - 1) < num_gay_women):
-            preferences = group_assignments[1]+group_assignments[3]
+            preferences = group_assignments[1] + group_assignments[3]
         #gay women
         elif(i < total_participants + 1):
             preferences = group_assignments[4]+group_assignments[6]
@@ -148,7 +147,6 @@ def generate_proportional_data(num, filename):
         if i in preferences:
             preferences.remove(i)
         all_preferences[i] = preferences
-        group_assignments[group_num].append(i)
 
     
     new_filename = os.path.splitext(filename)[0]
