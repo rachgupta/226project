@@ -2,13 +2,7 @@ import pickle
 import sys
 
 def find_group_equal_score(group_costs):
-    max_score = 0
-    for i in range(6):
-        for j in range(6):
-            score = abs(group_costs[i]-group_costs[j])
-            if score > max_score:
-                max_score = score
-    return max_score
+    return max(group_costs) - min(group_costs)
 
 def find_balanced_score(group_costs):
     return max(group_costs)
@@ -59,6 +53,7 @@ def main(dict_file, group_file, matches_file):
     group_costs = find_cost(pairings, all_preferences, groups)
     balanced_score = find_balanced_score(group_costs)
     group_equal_score = find_group_equal_score(group_costs)
+    print(f"Group Costs = {group_costs}")
     print(f"Balanced Score = {balanced_score}")
     print(f"Group Equal Score = {group_equal_score}")
 
