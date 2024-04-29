@@ -19,45 +19,5 @@ def main():
     with open(sys.argv[3], 'w') as f:
         f.write(str(pairings))
     
-<<<<<<< HEAD
-=======
-    group_costs = cost(pairings, all_preferences, groups)
-    print(balanced_score(group_costs))
-    print(group_equal_score(group_costs))
->>>>>>> fa2bfb5e44a2acde08ad59bd43ab6cf7acfef659
-    
-def group_equal_score(group_costs):
-    max_score = 0
-    for i in range(6):
-        for j in range(6):
-            score = abs(group_costs[i]-group_costs[j])
-            if score > max_score:
-                max_score = score
-    return max_score
-
-def balanced_score(group_costs):
-    return max(group_costs)
-
-def cost(pairings, all_preferences, groups):
-    group_costs = [0, 0, 0, 0, 0, 0]
-    for pair in pairings:
-        person1 = pair[0]
-        person2 = pair[1]
-        # find rank of person 2 on person 1's list
-        rank1 = all_preferences[person1].index(person2)
-        # find rank of person 1 on person 2's list
-        rank2 = all_preferences[person2].index(person1)
-        person1_group = find_group(person1, groups)-1 # find which group person 1 belongs to
-        person2_group = find_group(person2, groups)-1 # find which group person 2 belongs to
-        # update group costs
-        group_costs[person1_group] += rank1
-        group_costs[person2_group] += rank2
-    return group_costs
-
-def find_group(person, groups):
-    for i in range(1,7):
-        if person in groups[i]:
-            return i
-
 if __name__ == "__main__":
     main()
