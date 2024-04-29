@@ -148,43 +148,6 @@ def generate_proportional_data(num, filename):
         if i in preferences:
             preferences.remove(i)
         all_preferences[i] = preferences
-        group_num = 0
-        #bi men
-        if(i < num_bi_men + 1):
-            range_beginning = 1
-            range_end = total_participants + 1
-            group_num = 1
-        #gay men
-        elif(0 <= (i - num_bi_men - 1)  < num_gay_men):
-            range_beginning = 1
-            range_end = num_bi_men + num_gay_men + num_straight_men + 1
-            group_num = 2
-        #straight men
-        elif(0 <= (i - num_bi_men - num_gay_men - 1) < num_straight_men):
-            range_beginning = num_bi_men + num_gay_men + num_straight_men + 1
-            range_end = total_participants + 1
-            group_num = 3
-        #bi women
-        elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - 1) < num_bi_women):
-            range_beginning = 1
-            range_end = total_participants + 1
-            group_num = 4
-        #straight women
-        elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - num_bi_women - 1) < num_gay_women):
-            range_beginning = 1
-            range_end = num_bi_men + num_gay_men + num_straight_men + 1
-            group_num = 5
-        #gay women
-        elif(i < total_participants + 1):
-            range_beginning = num_bi_men + num_gay_men + num_straight_men + 1
-            range_end = total_participants + 1
-            group_num = 6
-        
-        preferences = list(range(range_beginning, range_end))
-        random.shuffle(preferences)
-        if i in preferences:
-            preferences.remove(i)
-        all_preferences[i] = preferences
         group_assignments[group_num].append(i)
 
     
