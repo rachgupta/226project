@@ -53,7 +53,7 @@ def generate_random_data(num, filename):
         elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - 1) < num_bi_women):
             preferences = group_assignments[4]+group_assignments[6]+group_assignments[3]+group_assignments[1]
         #straight women
-        elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - num_bi_women - 1) < num_gay_women):
+        elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - num_bi_women - 1) < num_straight_women):
             preferences = group_assignments[1]+group_assignments[3]
         #gay women
         elif(i < total_participants + 1):
@@ -82,13 +82,13 @@ def generate_random_data(num, filename):
             # Write the formatted string to the file
             file.write(line + '\n')
 
-def generate_proportional_data(num, filename):
+def generate_proportional_data(num, filename, proportion_straight):
     ##PROPORTIONS ESTIMATED FROM 2021 DATA
     ##assumed 10% gay or bisexual
     ##assumed 5% homosexual, 5% bisexual, 90% straight
-    total_lgbt = int(0.4 * num)
-    total_straight = int(0.6 * num)
-    gay_count = int(0.2 * num)
+    total_lgbt = int((1-proportion_straight) * num)
+    total_straight = int(proportion_straight * num)
+    gay_count = total_lgbt//2
     bi_count = total_lgbt - gay_count
     straight_count = total_straight
     total_count = gay_count + bi_count + straight_count
@@ -138,7 +138,7 @@ def generate_proportional_data(num, filename):
         elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - 1) < num_bi_women):
             preferences = group_assignments[4]+group_assignments[6]+group_assignments[3]+group_assignments[1]
         #straight women
-        elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - num_bi_women - 1) < num_gay_women):
+        elif(0 <= (i - num_bi_men - num_gay_men - num_straight_men - num_bi_women - 1) < num_straight_women):
             preferences = group_assignments[1] + group_assignments[3]
         #gay women
         elif(i < total_participants + 1):
@@ -169,10 +169,10 @@ def generate_proportional_data(num, filename):
     
     return
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python generate_data.py <number> <filename> <flag>")
+    if len(sys.argv) < 4:
+        print("Usage: python generate_data.py <number> <filename> <flag> <proportion_straight> ")
     else:
         if int(sys.argv[3]) == 0:
             generate_random_data(int(sys.argv[1]), sys.argv[2])
         elif int(sys.argv[3]) == 1:
-            generate_proportional_data(int(sys.argv[1]), sys.argv[2])
+            generate_proportional_data(int(sys.argv[1]), sys.argv[2], float(sys.argv[4]))
