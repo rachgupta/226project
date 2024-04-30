@@ -3,7 +3,7 @@ import json
 import sys
 import pickle
 import os
-def generate_random_data(num, filename):
+def generate_equal_data(num, filename):
 
     #IDs start here
     num_bi_men = num
@@ -173,6 +173,6 @@ if __name__ == "__main__":
         print("Usage: python generate_data.py <number> <filename> <flag> <proportion_straight> ")
     else:
         if int(sys.argv[3]) == 0:
-            generate_random_data(int(sys.argv[1]), sys.argv[2])
+            generate_equal_data(int(sys.argv[1]), sys.argv[2])
         elif int(sys.argv[3]) == 1:
             generate_proportional_data(int(sys.argv[1]), sys.argv[2], float(sys.argv[4]))
