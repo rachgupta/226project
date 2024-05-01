@@ -1,5 +1,7 @@
 # 226 Final Project
-
+##Requirements
+pip install gurobipy
+Gurobipy Academic License
 ## Background:
 The Stable Marriage Problem is a classic problem in mathematics and computer science that deals with finding a stable matching between two equally sized sets of elements, typically represented as men and women. The goal is to pair each element from the first set with exactly one element from the second set in such a way that there are no two elements, each from different sets, who would both prefer each other over their current partners.
 
