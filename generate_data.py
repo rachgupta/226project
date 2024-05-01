@@ -3,6 +3,8 @@ import json
 import sys
 import pickle
 import os
+
+#Method 1: Generating random data assuming equal numbers in all 6 groups
 def generate_equal_data(num, filename):
 
     #IDs start here
@@ -64,29 +66,26 @@ def generate_equal_data(num, filename):
             preferences.remove(i)
         all_preferences[i] = preferences
     
+    #pickle the group assignments and preference dictionary for the fairness_constraints.py
     new_filename = os.path.splitext(filename)[0]
     
     group_filename = new_filename + '_group.pkl'
-    with open(group_filename, 'wb') as f:  # open a text file
+    with open(group_filename, 'wb') as f:
         pickle.dump(group_assignments, f)
         
     dict_filename = new_filename + '_dict.pkl'
-    with open(dict_filename, 'wb') as f:  # open a text file
+    with open(dict_filename, 'wb') as f:
         pickle.dump(all_preferences, f)
         
+    #write the preferences in the format specified by the SRI_IP github repo
     with open(filename, "w") as file:
-        # Iterate over the dictionary items
         file.write(str(total_participants) + '\n')
         for key, value in all_preferences.items():
-            # Convert the array to a space-separated string
             line = ' '.join(map(str, value))
-            # Write the formatted string to the file
             file.write(line + '\n')
-
+#Method 2: Generating random data assuming proportional numbers
 def generate_proportional_data(num, filename, proportion_straight):
-    ##PROPORTIONS ESTIMATED FROM 2021 DATA
-    ##assumed 10% gay or bisexual
-    ##assumed 5% homosexual, 5% bisexual, 90% straight
+    ##proportion from command line
     total_lgbt = int((1-proportion_straight) * num)
     total_straight = int(proportion_straight * num)
     gay_count = total_lgbt//2
@@ -149,7 +148,7 @@ def generate_proportional_data(num, filename, proportion_straight):
             preferences.remove(i)
         all_preferences[i] = preferences
 
-    
+    #pickling relevant files
     new_filename = os.path.splitext(filename)[0]
     group_filename = new_filename + '_group.pkl'
     with open(group_filename, 'wb') as f:  # open a text file
@@ -159,16 +158,14 @@ def generate_proportional_data(num, filename, proportion_straight):
     with open(dict_filename, 'wb') as f:  # open a text file
         pickle.dump(all_preferences, f)
         
+    #formatting as per SRI_IP
     with open(filename, "w") as file:
-        # Iterate over the dictionary items
         file.write(str(total_participants) + '\n')
         for key, value in all_preferences.items():
-            # Convert the array to a space-separated string
             line = ' '.join(map(str, value))
-            # Write the formatted string to the file
-            file.write(line + '\n')
-    
+            file.write(line + '\n')    
     return
+#Method 3: Generating weighted preferences based on random truth data assuming equal numbers
 def generate_weighted_equal_data(num, filename):
     num_bi_men = num
     num_gay_men = num
@@ -236,24 +233,22 @@ def generate_weighted_equal_data(num, filename):
         new_filename = os.path.splitext(filename)[0]
     
         group_filename = new_filename + '_group.pkl'
-        with open(group_filename, 'wb') as f:  # open a text file
+        with open(group_filename, 'wb') as f:
             pickle.dump(group_assignments, f)
         
         dict_filename = new_filename + '_dict.pkl'
-        with open(dict_filename, 'wb') as f:  # open a text file
+        with open(dict_filename, 'wb') as f:
             pickle.dump(all_preferences, f)
         
         with open(filename, "w") as file:
-            # Iterate over the dictionary items
             file.write(str(total_participants) + '\n')
             for key, value in all_preferences.items():
-                # Convert the array to a space-separated string
                 line = ' '.join(map(str, value))
-                # Write the formatted string to the file
                 file.write(line + '\n')
 
     
-    
+
+#handling arguments (flag = 0 1 or 2 according to method)
 if __name__ == "__main__":
     if len(sys.argv) < 4:
         print("Usage: python generate_data.py <number> <filename> <flag> <proportion_straight> ")
